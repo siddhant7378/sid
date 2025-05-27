@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .container {
+            margin: 20px auto;
+            width: 80%;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 100%;
+        }
+
+        .button-panel {
+            margin-top: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Student Management System</h1>
+        <textarea id="textArea" rows="10" cols="40"></textarea>
+        <div class="button-panel">
+            <button onclick="addStudent()">Add Student</button>
+            <button onclick="viewStudents()">View Students</button>
+            <button onclick="updateStudent()">Update Student</button>
+            <button onclick="deleteStudent()">Delete Student</button>
+        </div>
+    </div>
+    <script>
+        const students = [];
+
+        function addStudent() {
+            const rollNumber = prompt("Enter Roll Number:");
+            const name = prompt("Enter Name:");
+
+            if (rollNumber && name) {
+                const roll = parseInt(rollNumber);
+                const student = { rollNumber: roll, name: name };
+                students.push(student);
+                document.getElementById("textArea").value += "Student added successfully.\n";
+            }
+        }
+
+        function viewStudents() {
+            const textArea = document.getElementById("textArea");
+
+            ea.value = "No students to display.\n";
+            } else {
+                textArea.value = "List of Students:\n";
+                students.forEach(function (student) {
+                    textArea.value += `Roll Number: ${student.rollNumber}, Name: ${student.name}\n`;
+                });
+            }
+        }
+
+        function updateStudent() {
+            const rollNumber = prompt("Enter Roll Number to update:");
+
+            if (rollNumber) {
+                const roll = parseInt(rollNumber);
+                let found = false;
+
+                for (let i = 0; i < students.length; i++) {
+                    const student = students[i];
+
+                    if (student.rollNumber === roll) {
+                        const newName = prompt("Enter new Name:");
+
+                        if (newName) {
+                            student.name = newName;
+                            document.getElementById("textArea").value += "Student updated successfully.\n";
+                        }
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (!found) {
+                    document.getElementById("textArea").value += `Student with Roll Number ${roll} not found.\n`;
+                }
+            }
+        }
+
+        function deleteStudent() {
+            const rollNumber = prompt("Enter Roll Number to delete:");
+
+            if (rollNumber) {
+                const roll = parseInt(rollNumber);
+                let found = false;
+
+                for (let i = 0; i < students.length; i++) {
+                    const student = students[i];
+
+                    if (student.rollNumber === roll) {
+                        students.splice(i, 1);
+                        document.getElementById("textArea").value += "Student deleted successfully.\n";
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (!found) {
+                    document.getElementById("textArea").value += `Student with Roll Number ${roll} not found.\n`;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

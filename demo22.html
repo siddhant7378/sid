@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Puzzle Game</title>
+    <style>
+        /* Add your CSS styles here */
+        .puzzle-piece {
+            width: 100px;
+            height: 100px;
+            background-color: #3498db;
+            text-align: center;
+            vertical-align: middle;
+            line-height: 100px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Puzzle Game</h1>
+
+    <div id="puzzle-container">
+        <div class="puzzle-piece" id="piece-1">1</div>
+        <div class="puzzle-piece" id="piece-2">2</div>
+        <div class="puzzle-piece" id="piece-3">3</div>
+        <div class="puzzle-piece" id="piece-4">4</div>
+        <div class="puzzle-piece" id="piece-5">5</div>
+        <div class="puzzle-piece" id="piece-6">6</div>
+        <div class="puzzle-piece" id="piece-7">7</div>
+        <div class="puzzle-piece" id="piece-8">8</div>
+        <div class="puzzle-piece" id="piece-9">9</div>
+    </div>
+
+    <script>
+        // JavaScript for the puzzle game logic
+        let pieces = document.querySelectorAll(".puzzle-piece");
+
+        pieces.forEach((piece) => {
+            piece.addEventListener("click", () => {
+                // Implement your puzzle piece logic here
+                alert(`You clicked piece ${piece.textContent}`);
+            });
+        });
+    </script>
+</body>
+</html>
